@@ -50,9 +50,9 @@ function NavbarCustom(props) {
 
             {!auth.user && (
               <Nav.Item>
-                <LinkContainer to="/auth/signin">
-                  <Nav.Link>Sign in</Nav.Link>
-                </LinkContainer>
+                {/* <LinkContainer to="/#formTurnos"> */}
+                  <Nav.Link href="/#formTurnos">Solicita tu turno</Nav.Link>
+                {/* </LinkContainer> */}
               </Nav.Item>
             )}
           </Nav>

@@ -30,6 +30,7 @@ function HeroSection(props) {
               variant={props.buttonColor}
               size="lg"
               onClick={props.buttonOnClick}
+              href={props.href}
             >
               {props.buttonText}
             </Button>

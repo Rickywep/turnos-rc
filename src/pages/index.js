@@ -1,11 +1,11 @@
 import React from "react";
 import HeroSection from "./../components/HeroSection";
-import Form from "react-bootstrap/Form";
 import ClientsSection from "./../components/ClientsSection";
 import FeaturesSection from "./../components/FeaturesSection";
 import TestimonialsSection from "./../components/TestimonialsSection";
 import NewsletterSection from "./../components/NewsletterSection";
 import { useRouter } from "./../util/router.js";
+import FormTurnos from "../components/FormTurnos";
 
 function IndexPage(props) {
   const router = useRouter();
@@ -18,27 +18,21 @@ function IndexPage(props) {
         size="md"
         bgImage=""
         bgImageOpacity={1}
-        title="Your landing page title here"
-        subtitle="This landing page is perfect for showing off your awesome product and driving people to sign up for a paid plan."
-        buttonText="Get Started"
+        title="Rolling Code te esta esperando"
+        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam neque dolorum, earum itaque suscipit officiis? Asperiores autem,."
+        buttonText="Solicitar Turno"
         buttonColor="primary"
         image="https://uploads.divjoy.com/undraw-japan_ubgk.svg"
-        buttonOnClick={() => {
-          // Navigate to pricing page
-          router.push("/pricing");
-        }}
+        href="/#formTurnos"
+      // buttonOnClick={() => {
+      //   // Navigate to pricing page
+      //   router.push("/");
+      // }}
       ></HeroSection>
-      <Form>
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email"></Form.Control>
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-      </Form>
-      <form></form>
-      <ClientsSection
+      <div id="formTurnos" className="p-5">
+        <FormTurnos />
+      </div>
+      {/* <ClientsSection
         bg="light"
         textColor="dark"
         size="sm"
@@ -64,8 +58,8 @@ function IndexPage(props) {
         bgImageOpacity={1}
         title="Here's what people are saying"
         subtitle=""
-      ></TestimonialsSection>
-      <NewsletterSection
+      ></TestimonialsSection>*/}
+      {/* <NewsletterSection
         bg="white"
         textColor="dark"
         size="md"
@@ -77,7 +71,7 @@ function IndexPage(props) {
         buttonColor="primary"
         inputPlaceholder="Enter your email"
         subscribedMessage="You are now subscribed!"
-      ></NewsletterSection>
+      ></NewsletterSection>  */}
     </>
   );
 }
