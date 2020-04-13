@@ -21,7 +21,7 @@ function IndexPage(props) {
         title="Rolling Code te esta esperando"
         subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam neque dolorum, earum itaque suscipit officiis? Asperiores autem,."
         buttonText="Solicitar Turno"
-        buttonColor="primary"
+        buttonColor="success"
         image="https://rollingcodeschool.com/assets/images/img-20190415-084231186-hdr-892x502.jpg"
         href="/#formTurnos"
       // buttonOnClick={() => {
@@ -29,8 +29,19 @@ function IndexPage(props) {
       //   router.push("/");
       // }}
       ></HeroSection>
-      <div id="formTurnos" className="p-5">
-        <FormTurnos />
+      <div id="formTurnos">
+        <FormTurnos
+        bg="white"
+        textColor="dark"
+        size="md"
+        bgImage=""
+        bgImageOpacity={1}
+        title="Solicita tu Turno"
+        subtitle="Dejanos tus datos, el motivo y elegi cuando te sea mas comodo visitarnos"
+        buttonText="Enviar"
+        buttonColor="success"
+        inputPlaceholder="Enter your email"
+        subscribedMessage="You are now subscribed!" />
       </div>
       {/* <ClientsSection
         bg="light"
