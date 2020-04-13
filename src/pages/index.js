@@ -22,7 +22,7 @@ function IndexPage(props) {
         subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam neque dolorum, earum itaque suscipit officiis? Asperiores autem,."
         buttonText="Solicitar Turno"
         buttonColor="primary"
-        image="https://uploads.divjoy.com/undraw-japan_ubgk.svg"
+        image="https://rollingcodeschool.com/assets/images/img-20190415-084231186-hdr-892x502.jpg"
         href="/#formTurnos"
       // buttonOnClick={() => {
       //   // Navigate to pricing page
@@ -40,7 +40,8 @@ function IndexPage(props) {
         bgImageOpacity={1}
         title=""
         subtitle=""
-      ></ClientsSection>
+      ></ClientsSection> */}
+      {/* 
       <FeaturesSection
         bg="white"
         textColor="dark"

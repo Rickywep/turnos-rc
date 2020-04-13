@@ -18,7 +18,7 @@ function NavbarCustom(props) {
               className="d-inline-block align-top"
               src={props.logo}
               alt="Logo"
-              height="30"
+              height="40"
             ></img>
           </Navbar.Brand>
         </LinkContainer>

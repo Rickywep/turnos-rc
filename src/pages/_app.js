@@ -14,10 +14,10 @@ function App(props) {
       <Router>
         <>
           <NavbarCustom
-            bg="white"
+            bg="light"
             variant="light"
             expand="md"
-            logo="https://uploads.divjoy.com/logo.svg"
+            logo="https://campus.rollingcodeschool.com/pluginfile.php/1/core_admin/logo/0x200/1565638965/logo2.png"
           ></NavbarCustom>
 
           <Switch>
@@ -52,8 +52,8 @@ function App(props) {
             bgImage=""
             bgImageOpacity={1}
             description="A short description of what you do here"
-            copyright="© 2019 Company"
-            logo="https://uploads.divjoy.com/logo.svg"
+            copyright="© 2020"
+            logo="https://campus.rollingcodeschool.com/pluginfile.php/1/core_admin/logo/0x200/1565638965/logo2.png"
           ></Footer>
         </>
       </Router>

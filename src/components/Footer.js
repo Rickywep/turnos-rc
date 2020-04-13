@@ -14,23 +14,11 @@ function Footer(props) {
       bgImageOpacity={props.bgImageOpacity}
     >
       <Container>
-        <div className="FooterComponent__inner">
+        <div className="FooterComponent__inner" >
           <div className="brand left">
             <Link to="/">
               <img src={props.logo} alt="Logo"></img>
             </Link>
-          </div>
-          <div className="links right">
-            <Link to="/about">About</Link>
-            <Link to="/faq">FAQ</Link>
-            <Link to="/contact">Contact</Link>
-            <a
-              target="_blank"
-              href="https://medium.com"
-              rel="noopener noreferrer"
-            >
-              Blog
-            </a>
           </div>
           <div className="social right">
             <a
