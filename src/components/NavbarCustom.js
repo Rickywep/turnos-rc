@@ -47,14 +47,6 @@ function NavbarCustom(props) {
                 </LinkContainer>
               </NavDropdown>
             )}
-
-            {!auth.user && (
-              <Nav.Item>
-                {/* <LinkContainer to="/#formTurnos"> */}
-                  <Nav.Link href="/#formTurnos">Solicita tu turno</Nav.Link>
-                {/* </LinkContainer> */}
-              </Nav.Item>
-            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -1,10 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Section from "./Section";
 import { Container, Table } from "react-bootstrap";
 import SectionHeader from "./SectionHeader";
+import fire from "../util/fire";
+import './TablaTurnos.scss'
 
+var turnsRef = fire.database().ref('turns').orderByKey().limitToLast(100);
 
 const TablaTurnos = (props) => {
+
+    const [turns, setTurns] = useState({})
+    let tr = []
+
+    useEffect(() => {
+        turnsRef.on('value', function (snapshot) {
+            setTurns(snapshot.val());
+        })
+    }, [])
+
+
+    const handleClick = () => {
+        turnsRef.on('value', function (snapshot) {
+            setTurns(snapshot.val());
+        })
+    }
+    const array = []
+    for (const key in turns) {
+        if (turns.hasOwnProperty(key)) {
+            const el = turns[key];
+            array.push(
+                <tr key={key}>
+                    <td> {el.nombre} </td>
+                    <td> {el.email} </td>
+                    <td> {el.motivo} </td>
+                    <td> {el.fecha} </td>
+                    <td> {el.turno} </td>
+                </tr>
+            )
+        }
+    }
+    tr = array;
+
     return (
         <Section
             bg={props.bg}
@@ -21,6 +57,7 @@ const TablaTurnos = (props) => {
                     spaced={true}
                     className="text-center"
                 ></SectionHeader>
+                <button onClick={handleClick}>Refrescar</button>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -32,20 +69,16 @@ const TablaTurnos = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Ricardo Moreno</td>
-                            <td>ricky@gmail.com</td>
-                            <td>Pago de Cuota</td>
-                            <td>15/04/2020</td>
-                            <td>08:00</td>
-                        </tr>
-                        <tr>
-                            <td>Juan ALonso</td>
-                            <td>juan@gmail.com</td>
-                            <td>Consulta</td>
-                            <td>20/05/2020</td>
-                            <td>13:00</td>
-                        </tr>
+                        {tr}
+                        {!tr.length &&
+                            <tr className="fakeItem">
+                                <td>  </td>
+                                <td>  </td>
+                                <td>  </td>
+                                <td>  </td>
+                                <td>  </td>
+                            </tr>
+                        }
                     </tbody>
                 </Table>
             </Container>

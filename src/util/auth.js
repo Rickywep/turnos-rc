@@ -3,13 +3,17 @@ import queryString from "query-string";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
+export var fire;
 if (!firebase.apps.length) {
   // Replace with your own Firebase credentials
-  firebase.initializeApp({
-    apiKey: "AIzaSyBkkFF0XhNZeWuDmOfEhsgdfX1VBG7WTas",
-    authDomain: "divjoy-demo.firebaseapp.com",
-    projectId: "divjoy-demo",
-    appID: "divjoy-demo"
+ fire = firebase.initializeApp({
+  apiKey: "AIzaSyCaF0-ueWJwDmf56JDvu_VtB5lKiHSA2u0",
+  authDomain: "turnos-rc.firebaseapp.com",
+  databaseURL: "https://turnos-rc.firebaseio.com",
+  projectId: "turnos-rc",
+  storageBucket: "turnos-rc.appspot.com",
+  messagingSenderId: "980944687121",
+  appId: "1:980944687121:web:18282199994a60eef021b0"
   });
 }
 
