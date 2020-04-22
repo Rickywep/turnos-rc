@@ -31,7 +31,7 @@ export function register(config) {
         // service worker/PWA documentation.
 
         navigator.serviceWorker.ready.then(function () {
-          console.log('This web app is being served cache-first by a service ' + 'worker. To learn more, visit https://bit.ly/CRA-PWA');
+          // console.log('This web app is being served cache-first by a service ' + 'worker. To learn more, visit https://bit.ly/CRA-PWA');
         });
       } else {
         // Is not localhost. Just register service worker
@@ -56,7 +56,7 @@ function registerValidSW(swUrl, config) {
             // At this point, the updated precached content has been fetched,
             // but the previous service worker will still serve the older
             // content until all client tabs are closed.
-            console.log('New content is available and will be used when all ' + 'tabs for this page are closed. See https://bit.ly/CRA-PWA.'); // Execute callback
+            // console.log('New content is available and will be used when all ' + 'tabs for this page are closed. See https://bit.ly/CRA-PWA.'); // Execute callback
 
             if (config && config.onUpdate) {
               config.onUpdate(registration);
@@ -83,19 +83,19 @@ function checkValidServiceWorker(swUrl, config) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl).then(function (response) {
     // Ensure service worker exists, and that we really are getting a JS file.
-    var contentType = response.headers.get('content-type');
+    // var contentType = response.headers.get('content-type');
 
-    if (response.status === 404 || contentType != null && contentType.indexOf('javascript') === -1) {
-      // No service worker found. Probably a different app. Reload the page.
-      navigator.serviceWorker.ready.then(function (registration) {
-        registration.unregister().then(function () {
-          window.location.reload();
-        });
-      });
-    } else {
-      // Service worker found. Proceed as normal.
-      registerValidSW(swUrl, config);
-    }
+    // if (response.status === 404 || contentType != null && contentType.indexOf('javascript') === -1) {
+    //   // No service worker found. Probably a different app. Reload the page.
+    //   navigator.serviceWorker.ready.then(function (registration) {
+    //     registration.unregister().then(function () {
+    //       window.location.reload();
+    //     });
+    //   });
+    // } else {
+    //   // Service worker found. Proceed as normal.
+    //   registerValidSW(swUrl, config);
+    // }
   })["catch"](function () {
     console.log('No internet connection found. App is running in offline mode.');
   });
