@@ -3,25 +3,11 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import Section from './Section';
 import SectionHeader from './SectionHeader';
 import fire from "../util/fire";
-
-
-
+import ReCAPTCHA from "react-google-recaptcha";
 
 const FormTurnos = (props) => {
 
     // const handleSubmit = (/* userId, name, email, imageUrl */ e) => {
-    //     e.preventDefault();
-    //     e.persist()
-    //     const data = {};
-    //     for (const input of e.target.elements) {
-    //         if (input.id) { data[input.id] = input.value; }
-    //     }
-
-
-    //     console.log(data);
-    //     var database = fire.database();
-    //     database.ref('turns').orderByKey().limitToLast(100)
-    //     database.ref('turns').push(data);
 
     // }
 
@@ -33,23 +19,40 @@ const FormTurnos = (props) => {
         motivo: 'Selecciona el Motivo de tu visita'
     });
 
+    const [error, setError] = useState(false)
+
+    const [recaptcha, setRecaptcha] = useState({
+        value: '',
+
+    })
+    function recaptchaChange(value) {
+        setRecaptcha({ value: value })
+    }
+
 
     const actualizarState = e => {
         setTurno({
             ...turno,
             [e.target.name]: e.target.value
         })
+        setError(false)
     }
+
     const { nombre, email, fecha, hora, motivo } = turno;
+    const { value } = recaptcha;
 
     const submitTurno = e => {
         e.preventDefault();
 
+        //validando captcha
+        if (value.trim() === '') {
+            alert("completa el captcha");
+            return
+        }
         //validando
         if (nombre.trim() === '' || email.trim() === '' || fecha.trim() === '' ||
             hora.trim() === '' || motivo.trim() === '') {
-            // setError(true)
-            alert("completa los campos")
+            setError(true)
             return
         }
 
@@ -60,7 +63,6 @@ const FormTurnos = (props) => {
         }
 
 
-        console.log("daataa", data);
         var database = fire.database();
         database.ref('turns').orderByKey().limitToLast(100)
         database.ref('turns').push(data);
@@ -77,11 +79,7 @@ const FormTurnos = (props) => {
 
     }
 
-
-
-
     return (
-
         <Section
             bg={props.bg}
             textColor={props.textColor}
@@ -100,6 +98,7 @@ const FormTurnos = (props) => {
                         ></SectionHeader>
                     </Col>
                     <Col xs={12} lg={6} className="mt-4 mt-lg-0">
+                        {error ? <p className="alert alert-danger"> Todos los Campos son obligatorios</p> : null}
                         <Form
                             // onSubmit={handleSubmit}
                             onSubmit={submitTurno}
@@ -146,7 +145,6 @@ const FormTurnos = (props) => {
                                             name="hora"
                                             value={hora}
                                             onChange={actualizarState}
-
                                         >
                                             <option disabled="disabled">{hora}</option>
                                             <option>08:00</option>
@@ -170,13 +168,29 @@ const FormTurnos = (props) => {
                                     <option>Otros...</option>
                                 </Form.Control>
                             </Form.Group>
-                            <Button
-                                variant={props.buttonColor}
-                                size={props.size}
-                                type="submit"
-                            >
-                                {props.buttonText}
-                            </Button>
+                            {motivo == "Otros..." ?
+                                <Form.Group controlId="exampleForm.ControlTextarea1">
+                                    <Form.Label>Example textarea</Form.Label>
+                                    <Form.Control as="textarea" rows="3" />
+                                </Form.Group>
+                                : null}
+                            <Row className="justify-content-between">
+                                <ReCAPTCHA
+                                    className="mx-3"
+                                    sitekey="6LecQ-0UAAAAAHIXIrLYehkR4rNRzf1wQWIpiiXE"
+                                    onChange={recaptchaChange}
+                                />
+                                <Col>
+                                    <Button
+                                        style={{ display: "inline-block" }}
+                                        variant={props.buttonColor}
+                                        size={props.size}
+                                        type="submit"
+                                    >
+                                        {props.buttonText}
+                                    </Button>
+                                </Col>
+                            </Row>
                         </Form>
                     </Col>
                 </Row>
